@@ -12,7 +12,13 @@ namespace ProgRecords.Repository.Tests
     public class MusicRecordsRepositoryTests
     {
         [TestMethod()]
-        public void MusicRecordsRepositoryTest()
+        public void MusicRecordsRepository_Test()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void Get_Test()
         {
             throw new NotImplementedException();
         }
