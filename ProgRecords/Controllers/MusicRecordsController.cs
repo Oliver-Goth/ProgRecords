@@ -20,6 +20,8 @@ namespace ProgRecords.Controllers
 
         // GET: api/<MusicRecordsController>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<List<MusicRecord>> Get()
         {
             return Ok(_Repo.Get());
