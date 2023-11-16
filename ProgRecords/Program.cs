@@ -1,7 +1,17 @@
+using Microsoft.Extensions.Options;
 using ProgRecords.Repository;
+
+var MyAllowAllOrigens = "_mtAllowAllOrigens";
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowAllOrigens, policy =>
+    {
+        policy.AllowAnyOrigin();
+    });
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -20,6 +30,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowAllOrigens);
 
 app.UseAuthorization();
 
