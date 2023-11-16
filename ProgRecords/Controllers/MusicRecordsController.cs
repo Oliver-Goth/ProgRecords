@@ -34,10 +34,14 @@ namespace ProgRecords.Controllers
             return "value";
         }
 
+
         // POST api/<MusicRecordsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public void Post([FromBody] MusicRecord value)
         {
+            _Repo.Add(value);
         }
 
         // PUT api/<MusicRecordsController>/5

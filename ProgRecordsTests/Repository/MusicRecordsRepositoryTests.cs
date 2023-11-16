@@ -25,10 +25,41 @@ namespace ProgRecords.Repository.Tests
         public void Get_Test()
         {
             MusicRecordsRepository repository = new MusicRecordsRepository();
-            MusicRecord record = new MusicRecord();
 
             List<MusicRecord> item = repository.Get();
             Assert.AreEqual(item.Count(), 3);
         }
+
+        [TestMethod()]
+        public void Get_Test_title()
+        {
+            MusicRecordsRepository repository = new MusicRecordsRepository();
+
+            List<MusicRecord> Sorteditem = repository.Get(title: "whistle");
+            Assert.AreEqual(Sorteditem.First().Title, "Whistle");
+        }
+
+        [TestMethod()]
+        public void Get_Test_year()
+        {
+            MusicRecordsRepository repository = new MusicRecordsRepository();
+
+            List<MusicRecord> Sorteditem = repository.Get(year: 2014);
+            Console.WriteLine(Sorteditem.First());
+            Assert.IsTrue(Sorteditem[0].PublicationYear > (2014 - 5) && Sorteditem[0].PublicationYear < (2014 + 5));
+        }
+
+        [TestMethod()]
+        public void Get_Test_sort()
+        {
+            MusicRecordsRepository repository = new MusicRecordsRepository();
+            List<MusicRecord> expectedResult = repository.Records.OrderBy(x => x.Title).ToList();
+
+            List<MusicRecord> Sorteditem = repository.Get(sortBy:"title");
+            Assert.AreEqual(Sorteditem[0].Title, "give it to me");
+            Assert.AreEqual(Sorteditem[1].Title, "love me harder");
+            Assert.AreEqual(Sorteditem[2].Title, "Whistle");
+        }
+
     }
 }
