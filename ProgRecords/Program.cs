@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Options;
 using ProgRecords.Repository;
 
-var MyAllowAllOrigens = "_mtAllowAllOrigens";
+var MyAllowAllOrigens = "_myAllowAllOrigens";
 
 var builder = WebApplication.CreateBuilder(args);
 

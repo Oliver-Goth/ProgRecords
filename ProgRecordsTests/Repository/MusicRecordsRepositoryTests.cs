@@ -61,5 +61,18 @@ namespace ProgRecords.Repository.Tests
             Assert.AreEqual(Sorteditem[2].Title, "Whistle");
         }
 
+        [TestMethod()]
+        public void add_new_record()
+        {
+            MusicRecordsRepository repository = new MusicRecordsRepository();
+            List<MusicRecord> oldList = repository.Get();
+
+            MusicRecord newRecord = new MusicRecord() { Title = "new", Artist = "new", Duration = 999, Id =0, PublicationYear = 2077 };
+            repository.Add(newRecord);
+            List<MusicRecord> newList = repository.Get();
+
+            Assert.IsTrue(newList.Count > oldList.Count);
+            Assert.AreEqual(newList.Last().Title, "new");
+        }
     }
 }
