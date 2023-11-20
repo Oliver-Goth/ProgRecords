@@ -16,7 +16,7 @@ namespace ProgRecords.Repository
             new MusicRecord() { Title = "give it to me", Artist = "The nothern Boys", Duration = 275, Id = _nextId++, PublicationYear = 2014 }};
         }
 
-        public List<MusicRecord> Get(string? title = null, string? sortBy = null, int year = 0 )
+        public List<MusicRecord> Get(string? title = null, string? sortBy = null, int? year = null )
         {
             List<MusicRecord> SortedList = new List<MusicRecord>(Records);
             if (title != null)

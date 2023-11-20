@@ -22,7 +22,7 @@ namespace ProgRecords.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<List<MusicRecord>> Get([FromQuery]string? title = null, string? sortBy = null, int year = 0)
+        public ActionResult<List<MusicRecord>> Get([FromQuery] string? title = null, string? sortBy = null, int? year = null)
         {
             return Ok(_Repo.Get(title,sortBy,year));
         }
