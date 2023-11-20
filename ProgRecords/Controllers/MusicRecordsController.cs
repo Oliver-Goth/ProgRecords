@@ -29,9 +29,11 @@ namespace ProgRecords.Controllers
 
         // GET api/<MusicRecordsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<MusicRecord> Get(int id)
         {
-            return "value";
+            return Ok(_Repo.GetById(id));
         }
 
 
