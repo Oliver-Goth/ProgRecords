@@ -16,16 +16,16 @@ namespace ProgRecords.Repository
             new MusicRecord() { Title = "give it to me", Artist = "The nothern Boys", Duration = 275, Id = _nextId++, PublicationYear = 2014 }};
         }
 
-        public List<MusicRecord> Get(string? title = null, string? sortBy = null, int year = -1 )
+        public List<MusicRecord> Get(string? title = null, string? sortBy = null, int year = 0 )
         {
             List<MusicRecord> SortedList = new List<MusicRecord>(Records);
             if (title != null)
             {
-                SortedList.FindAll(x => x.Title != null && x.Title.StartsWith(title));
+                SortedList.Where(x => x.Title != null && x.Title.Contains(title));
             }
             if (year > 1000)
             {
-                SortedList.FindAll(x => x.PublicationYear > (year - 5) && x.PublicationYear < (year +5));
+                SortedList.Where(x => x.PublicationYear > (year - 5) && x.PublicationYear < (year + 5));
             }
             if (sortBy != null)
             {
