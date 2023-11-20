@@ -44,6 +44,10 @@ namespace ProgRecords.Repository
             }
             return SortedList;
         }
+        public MusicRecord GetById(int id) 
+        {
+            return Records[id];
+        }
 
         public void Add(MusicRecord newRecord)
         {
